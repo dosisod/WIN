@@ -5,17 +5,19 @@
 <script src="code.js"></script>
 
 <div class="split">
-	<div class="topbar next left" id="fname">new buffer</div>
+	<div class="topbar next left"><span id="fname">new buffer</span><span id="status"> $</span></div>
 	<div class="topbar next right">
 		<span onclick="save()">SAVE </span><span onclick="oopen()">OPEN </span><span onclick="edit()">EDIT </span>
 	</div>
 </div>
 <div class="split">
-	<form id="save-form" action="recv.php" method="post">
+	<form id="save-form" action="recv.php" method="post" target="_blank">
+		<input type="hidden" name="save">
 		<textarea id="txt" name="txt" spellcheck="false" autocomplete="off"></textarea>
 	</form>
 </div>
 <form class="hidden" id="open-form" action="recv.php" method="post">
+	<input type="hidden" name="edit">
 	<input type="file" name="file" id="file" enctype="multipart/form-data">
 </form>
 </body>
