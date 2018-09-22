@@ -1,3 +1,9 @@
+window.onkeydown=function(e){
+	if (document.activeElement.tagName=="TEXTAREA") {
+		document.getElementById("status").innerHTML="&nbsp;&nbsp;&nbsp;MODIFIED"
+	}
+}
+
 function save() {
 	document.getElementById("save-form").submit()
 }
@@ -13,10 +19,12 @@ function oopen() { //open() is already taken so oopen() is used
 				document.getElementById("txt").innerHTML=fr.result
 				document.getElementById("fname").innerHTML=fl.name
 				document.getElementById("open-form").reset()
+				document.title=fl.name
 			}
 		}
 	}
 }
+
 function edit() {
 	alert("edit")
 }
