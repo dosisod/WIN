@@ -30,7 +30,7 @@ function oopen() { //open() is already taken so oopen() is used
 		fr.readAsText(fl)
 		fr.onloadend=function() {
 			if (confirm("Opening a new file overrides existing file. Press OK to continue")) {
-				document.getElementById("txt").innerHTML=fr.result
+				document.getElementById("text").innerHTML=fr.result
 				document.getElementById("fname").innerHTML=fl.name
 				document.getElementById("open-form").reset()
 				document.title=fl.name
