@@ -5,7 +5,11 @@
 <script src="code.js"></script>
 
 <div class="split">
-	<div class="topbar next left"><span id="fname">new buffer</span><span id="status"></span></div>
+	<div class="topbar next left">
+		<span class="fname-outer">
+			<span class="fname-inner" id="fname" contenteditable=true spellcheck=false>new buffer</span>
+		</span><span id="status"> </span>
+	</div>
 	<div class="topbar next right">
 		<span onclick="save()">SAVE </span><span onclick="oopen()">OPEN </span><span onclick="edit()">EDIT </span>
 	</div>
@@ -13,7 +17,7 @@
 <div class="split">
 	<form id="save-form" action="recv.php" method="post" target="_blank">
 		<input type="hidden" name="save">
-		<textarea id="txt" name="txt" spellcheck="false" autocomplete="off"></textarea>
+		<textarea id="text" name="txt" spellcheck="false" autocomplete="off"></textarea>
 	</form>
 </div>
 <form class="hidden" id="open-form" action="recv.php" method="post">

@@ -5,7 +5,21 @@ window.onkeydown=function(e){
 }
 
 function save() {
-	document.getElementById("save-form").submit()
+	fd=new FormData()
+	fd.append("text",document.getElementById("text").value)
+	fd.append("fname",document.getElementById("fname").innerHTML)
+
+	req=new XMLHttpRequest()
+	req.open("POST","/recv.php",true)
+
+	req.onreadystatechange=function(){ //from mozilla docs
+		if (this.readyState===XMLHttpRequest.DONE&&this.status===200) {
+			alert(this.responseText)
+		}
+	}
+
+	req.send(fd)
+	//document.getElementById("save-form").submit()
 }
 
 function oopen() { //open() is already taken so oopen() is used

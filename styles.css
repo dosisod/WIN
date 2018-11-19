@@ -46,3 +46,23 @@ div.split+ div.split {
 .hidden {
 	display: none;
 }
+#flex {
+  display: flex;
+  display: -webkit-flex;
+  line-height: 30px;
+}
+span.fname-inner {
+	padding: 0 1px;
+	min-width: 1em;
+	height:32px;
+	line-height:32px;
+	outline:none;
+	background-color: black;
+}
+span.fname-outer {
+	display: flex
+	display: -webkit-flex;
+	line-height: 32px;
+	color: white;
+	background: black;
+}
