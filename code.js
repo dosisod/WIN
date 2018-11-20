@@ -17,9 +17,7 @@ function save() {
 			alert(this.responseText)
 		}
 	}
-
 	req.send(fd)
-	//document.getElementById("save-form").submit()
 }
 
 function oopen() { //open() is already taken so oopen() is used
@@ -30,7 +28,7 @@ function oopen() { //open() is already taken so oopen() is used
 		fr.readAsText(fl)
 		fr.onloadend=function() {
 			if (confirm("Opening a new file overrides existing file. Press OK to continue")) {
-				document.getElementById("text").innerHTML=fr.result
+				document.getElementById("text").value=fr.result
 				document.getElementById("fname").innerHTML=fl.name
 				document.getElementById("open-form").reset()
 				document.title=fl.name
