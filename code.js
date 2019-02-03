@@ -1,32 +1,28 @@
-window.onkeydown=function(e){
+window.onkeydown=window.onkeyup=()=>{ //if file is not empty, show "MODIFIED" text
 	if (document.activeElement.tagName=="TEXTAREA") {
-		document.getElementById("status").innerHTML="&nbsp;&nbsp;&nbsp;MODIFIED"
+		if (document.activeElement.value!="")
+			document.getElementById("status").innerHTML="&nbsp;&nbsp;&nbsp;MODIFIED"
+		else
+			document.getElementById("status").innerHTML=""
 	}
 }
 
-function save() {
+function save() { //send file to server to be saved
 	fd=new FormData()
 	fd.append("text",document.getElementById("text").value)
 	fd.append("fname",document.getElementById("fname").innerHTML)
 
-	req=new XMLHttpRequest()
-	req.open("POST","/recv.php",true)
-
-	req.onreadystatechange=function(){ //from mozilla docs
-		if (this.readyState===XMLHttpRequest.DONE&&this.status===200) {
-			alert(this.responseText)
-		}
-	}
-	req.send(fd)
+	fetch("/recv.php", {method:"POST", body:fd}) //sends request
+		.then(e=>e.text())
+		.then(e=>alert(e))
 }
 
 function oopen() { //open() is already taken so oopen() is used
 	document.getElementById("file").click()
-	document.getElementById("open-form").onchange=function() {
-		var fl=document.getElementById("file").files[0]
+	document.getElementById("open-form").onchange=()=>{ //wait for file to be selected
+		var fl=document.getElementById("file").files[0] //get file
 		var fr=new FileReader()
-		fr.readAsText(fl)
-		fr.onloadend=function() {
+		fr.onloadend=()=>{
 			if (confirm("Opening a new file overrides existing file. Press OK to continue")) {
 				document.getElementById("text").value=fr.result
 				document.getElementById("fname").innerHTML=fl.name
@@ -34,9 +30,10 @@ function oopen() { //open() is already taken so oopen() is used
 				document.title=fl.name
 			}
 		}
+		fr.readAsText(fl) //read file data
 	}
 }
 
-function edit() {
+function edit() { //not added yet
 	alert("edit")
 }

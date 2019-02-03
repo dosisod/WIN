@@ -1,7 +1,10 @@
 <?php
 
+$path="/path/to/dir/"; //path to save files to
+
 if (isset($_POST["text"])&&isset($_POST["fname"])) {
-	file_put_contents($_POST["fname"], $_POST["text"]);
+	$file=basename($_POST["fname"]) //string any folder paths
+	file_put_contents($path.$file, $_POST["text"]);
 	echo $_POST["fname"]." was saved successfully";
 }
 else {
