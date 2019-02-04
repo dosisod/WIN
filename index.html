@@ -2,12 +2,11 @@
 <head><title>WIN</title></head>
 <body>
 <link rel="stylesheet" type="text/css" href="styles.css" />
-<script src="code.js"></script>
 
 <div class="split">
 	<div class="topbar next left">
 		<span class="fname-outer">
-			<span class="fname-inner" id="fname" contenteditable=true spellcheck=false>new buffer</span>
+			<span class="fname-inner" id="fname" contenteditable=true spellcheck=false onclick="fname(this)" placeholder="new buffer">new buffer</span>
 		</span><span id="status"> </span>
 	</div>
 	<div class="topbar next right">
@@ -24,5 +23,8 @@
 	<input type="hidden" name="edit">
 	<input type="file" name="file" id="file" enctype="multipart/form-data">
 </form>
+
+<script src="code.js"></script>
+
 </body>
 </html>

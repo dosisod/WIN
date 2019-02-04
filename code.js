@@ -7,6 +7,22 @@ window.onkeydown=window.onkeyup=()=>{ //if file is not empty, show "MODIFIED" te
 	}
 }
 
+function fname() { //selects text when file name is clicked
+	e=document.getElementById("fname")
+	if (document.body.createTextRange) { //chrome (?)
+		temp=document.body.createTextRange()
+		temp.moveToElementText(e)
+		temp.select()
+	}
+	else if (window.getSelection) { //firefox
+		temp=document.createRange()
+		temp.selectNodeContents(e)
+		selection=window.getSelection()
+		selection.removeAllRanges()
+		selection.addRange(temp)
+	}
+}
+
 function save() { //send file to server to be saved
 	fd=new FormData()
 	fd.append("text",document.getElementById("text").value)
