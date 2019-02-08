@@ -7,6 +7,11 @@ window.onkeydown=window.onkeyup=()=>{ //if file is not empty, show "MODIFIED" te
 	}
 }
 
+function check(e) { //checks and removes newlines inside of file name
+	//if a newline is typed dont add it to filename
+	(e.which||e.event)==13?e.preventDefault():""
+}
+
 function fname() { //selects text when file name is clicked
 	e=document.getElementById("fname")
 	if (document.body.createTextRange) { //chrome (?)
