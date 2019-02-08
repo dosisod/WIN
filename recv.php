@@ -2,6 +2,7 @@
 
 $path="/path/to/dir/"; //path to save files to
 $path=(realpath($path)); //dont change this
+error_log($path);
 
 if (isset($_POST["text"], $_POST["fname"])) {
 	//converts path of file to real path

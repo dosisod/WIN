@@ -26,7 +26,7 @@ function fname() { //selects text when file name is clicked
 function save() { //send file to server to be saved
 	fd=new FormData()
 	fd.append("text",document.getElementById("text").value)
-	fd.append("fname",document.getElementById("fname").innerHTML)
+	fd.append("fname",document.getElementById("fname").innerText)
 
 	fetch("/recv.php", {method:"POST", body:fd}) //sends request
 		.then(e=>e.text())
@@ -41,7 +41,7 @@ function oopen() { //open() is already taken so oopen() is used
 		fr.onloadend=()=>{
 			if (confirm("Opening a new file overrides existing file. Press OK to continue")) {
 				document.getElementById("text").value=fr.result
-				document.getElementById("fname").innerHTML=fl.name
+				document.getElementById("fname").innerText=fl.name
 				document.getElementById("open-form").reset()
 				document.title=fl.name
 			}
@@ -51,5 +51,5 @@ function oopen() { //open() is already taken so oopen() is used
 }
 
 function edit() { //not added yet
-	alert("edit")
+	alert("edit feature has not been implemented yet")
 }
