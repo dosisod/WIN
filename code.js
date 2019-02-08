@@ -1,9 +1,15 @@
-window.onkeydown=window.onkeyup=()=>{ //if file is not empty, show "MODIFIED" text
+window.onkeydown=window.onkeyup=(e)=>{ //if file is not empty, show "MODIFIED" text
 	if (document.activeElement.tagName=="TEXTAREA") {
-		if (document.activeElement.value!="")
-			document.getElementById("status").innerHTML="&nbsp;&nbsp;&nbsp;MODIFIED"
-		else
+		if (document.activeElement.value!="") {
+			key=e.which||e.event //current key
+			//keys that dont actually change the file
+			ignore=[16, 17, 18, 20, 27, 37, 38, 39, 40, 93]
+			if (ignore.indexOf(key)<0) //check whether ignored key was pressed
+				document.getElementById("status").innerHTML="&nbsp;&nbsp;&nbsp;MODIFIED"
+		}
+		else {
 			document.getElementById("status").innerHTML=""
+		}
 	}
 }
 
